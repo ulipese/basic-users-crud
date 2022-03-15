@@ -1,0 +1,168 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap");
+/* Variables */
+:root {
+  font-family: "Fredoka", sans-serif;
+  --title-font-size: 1.8em;
+  --bold-font-weight: 600;
+  --normal-font-weight: 400;
+  --light-red: hsl(6, 96%, 70%);
+  --light-orange: hsl(34, 89%, 64%);
+  --light-blue: hsl(236, 78%, 68%);
+  --light-gray: hsl(236, 91%, 91%);
+}
+/* Reusable classes */
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: var(--title-font-size);
+}
+.input {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  width: 98%;
+  height: 2em;
+  margin-bottom: 2.5em;
+  padding: 0.2em;
+  text-indent: 0.5em;
+  color: var(--light-red);
+}
+.input:focus {
+  outline: 2px solid var(--light-red);
+}
+.create-a {
+  font-size: calc(var(--title-font-size) - 0.3em);
+  width: 80%;
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  color: var(--light-red);
+  transition: 300ms;
+}
+.create-a:hover {
+  color: var(--light-blue);
+  text-decoration: underline;
+}
+.create-a.create-screen {
+  font-size: calc(var(--title-font-size) - 0.3em);
+  width: 90%;
+  margin-top: 0.8em;
+  margin-bottom: -1.5em;
+}
+.create-a.users {
+  margin: auto;
+}
+.create-p {
+  font-size: var(--title-font-size);
+  width: 70%;
+}
+.error-a {
+  margin: auto;
+}
+/* Mobile media */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+.form {
+  color: var(--light-red);
+  background-color: var(--light-gray);
+  width: 18em;
+  height: fit-content;
+  margin-top: 1em;
+  padding: 1em;
+  padding-top: 2em;
+  border-radius: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form.users {
+  margin-bottom: 2em;
+}
+.form.edit-user {
+  margin-top: 6em;
+}
+.form__username {
+  margin-bottom: 0.5em;
+}
+.form__password {
+  margin-bottom: 0.5em;
+}
+.form__email {
+  margin-bottom: 0.5em;
+}
+.form.create-user {
+  margin-top: 5em;
+}
+.form__username.users {
+  margin-bottom: -5px;
+}
+.form__password.users {
+  margin-bottom: -10px;
+}
+.form__email.users {
+  margin-bottom: 5px;
+}
+.form__submit {
+  font-size: 1.5em;
+  color: #fff;
+  background-color: var(--light-red);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 0.5em;
+  align-self: center;
+  margin-top: 0.5em;
+  transition: 300ms;
+}
+.form__submit:hover {
+  cursor: pointer;
+  background-color: var(--light-blue);
+}
+.form__submit.create-user {
+  margin-top: -1em;
+}
+.footer {
+  height: fit-content;
+  padding: 0.8em;
+  text-align: center;
+  align-self: center;
+  justify-self: flex-end;
+}
+.footer__a {
+  color: var(--light-red);
+  transition: 300ms;
+  font-size: 18px;
+}
+.footer__a:hover {
+  color: var(--light-blue);
+}
+/* Desktop media */
+@media screen and (min-width: 800px) {
+  .article {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 1em;
+    column-gap: 1em;
+    justify-content: center;
+    align-items: center;
+  }
+  form.users {
+    margin-bottom: 0;
+  }
+}

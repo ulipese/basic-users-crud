@@ -1,0 +1,24 @@
+<%- include('./header.ejs') %>
+
+<% users.forEach(user => { %>
+  <form action="/changeUser" method="post" class="form edit-user">
+  <h2 class="form__username title">Username</h2>
+  <input type="text" name="userName" autocomplete="off" required 
+  class="form__input-username input"  
+  value=<%= user.username %>>
+  <h3 class="form__password title">Password</h3>
+  <input type="number" name="userPass" autocomplete="off" required 
+  class="form__input-password input"
+  value=<%= user.password %>>
+  <h3 class="form__email title">Email</h3>
+  <input type="email" name="userEmail" autocomplete="off" required 
+  class="form__input-email input"
+  value=<%= user.email %>>
+  <button type="submit" name="userId" 
+  class="form__submit"
+  value=<%= user._id %>>Change User</button>
+</form>
+<%}) %>
+
+
+<%- include('./footer.ejs') %>

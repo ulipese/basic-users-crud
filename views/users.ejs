@@ -1,0 +1,20 @@
+<%- include('./header.ejs') %>
+
+<a href="/" class="create-a users"><%= message %></a>
+
+<article class="article users">
+  <% users.forEach(user => { %>
+  <form action="/delete" method="post" class="form users">
+  <h2 name="userName" class="form__username title users"><%= user.username %></h2>
+  <p name="userPass" class="form__password users">Password: <%= user.password %></p>
+  <p name="userEmail" class="form__email users">Email: <%= user.email %></p>
+  <a class="form__change-user" 
+  href=/changeUser<%= user._id %>>Change User</a>
+  <button type="submit" name="userId" 
+  class="form__submit" value=<%= user._id %>>Delete User</button>
+</form>
+<%}) %>
+</article>
+
+
+<%- include('./footer.ejs') %>
