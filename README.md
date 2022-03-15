@@ -11,7 +11,7 @@
 
 ### Demo
 
-<a href="https://git.heroku.com/ulipese-users-crud.git">See the demo here</a>
+<a href="https://ulipese-users-crud.herokuapp.com/">See the demo here</a>
 
 ## My process
 
