@@ -1,4 +1,4 @@
-<%- include('./header.ejs') %>
+<%- include('./partials/header.ejs') %>
 
 <% users.forEach(user => { %>
   <form action="/changeUser" method="post" class="form edit-user">
@@ -21,4 +21,4 @@
 <%}) %>
 
 
-<%- include('./footer.ejs') %>
+<%- include('./partials/footer.ejs') %>
