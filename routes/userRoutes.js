@@ -41,7 +41,7 @@ router
           email: admUser.email,
         });
         console.log("Email:" + admUser.email);
-        res.cookie("email", admUser.email, { secure: false });
+        res.cookie("email", admUser.email);
         res.cookie("pass", admUser.password);
         res.cookie("name", admUser.username);
 
