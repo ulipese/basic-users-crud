@@ -4,21 +4,20 @@ const cookieParser = require("cookie-parser");
 
 router
   .get("/", (req, res) => {
-    const cookies = req.cookies;
-    res.send(
-      "Hello " + cookies.name + " your password is " + cookies.pass
-    );
-    // if (req.cookies.user) {
-    //   console.log("User logged: " + req.cookies.user);
-    // } else {
-    //   res.redirect("/adm");
-    // }
+    res.redirect("/user");
   })
   .get("/adm", (req, res) => {
-    res.render("adm", {
-      titlePage: "Adm Page",
-      bodyClass: "adm",
-    });
+    const cookies = req.cookies;
+    if (cookies.name && cookies.pass) {
+      res.send(
+        "Hello " + cookies.name + " your password is " + cookies.pass
+      );
+    } else {
+      res.render("adm", {
+        titlePage: "Adm Page",
+        bodyClass: "adm",
+      });
+    }
   })
   .post("/adm", (req, res) => {
     const admUser = req.body;
