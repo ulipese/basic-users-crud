@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/userRoutes");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/", userRoutes);
 app.use(express.static(__dirname + "/public"));
+app.use(cookieParser())
+app.use("/", userRoutes);
 app.set("view engine", "ejs");
 
 const uri =

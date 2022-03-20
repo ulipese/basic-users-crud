@@ -1,14 +1,62 @@
 const router = require("express").Router();
 const { User } = require("../models/userSchema");
+const cookieParser = require("cookie-parser");
 
 router
   .get("/", (req, res) => {
+    const cookies = req.cookies;
+    res.send(
+      "Hello " + cookies.name + " your password is " + cookies.pass
+    );
+    // if (req.cookies.user) {
+    //   console.log("User logged: " + req.cookies.user);
+    // } else {
+    //   res.redirect("/adm");
+    // }
+  })
+  .get("/adm", (req, res) => {
+    res.render("adm", {
+      titlePage: "Adm Page",
+      bodyClass: "adm",
+    });
+  })
+  .post("/adm", (req, res) => {
+    const admUser = req.body;
+
+    User.findOne({ email: admUser.email }, (err, foundAdm) => {
+      if (err) {
+        console.log(err);
+      }
+      if (foundAdm) {
+        res.render("errorMessage.ejs", {
+          titlePage: "Sorry...",
+          bodyClass: "error",
+          link: "/",
+          message: "This user already exists... Create another here!",
+        });
+      }
+      if (!foundAdm) {
+        User.create({
+          username: admUser.username,
+          password: admUser.password,
+          email: admUser.email,
+        });
+        console.log("Email:" + admUser.email);
+        res.cookie("email", admUser.email, { secure: false });
+        res.cookie("pass", admUser.password);
+        res.cookie("name", admUser.username);
+
+        res.redirect("/");
+      }
+    });
+  })
+  .get("/user", (req, res) => {
     res.render("user", {
-      titlePage: "Home Page",
+      titlePage: "User Page",
       bodyClass: "home",
     });
   })
-  .post("/", (req, res) => {
+  .post("/user", (req, res) => {
     const user = req.body;
     User.findOne({ email: user.email }, (err, foundUser) => {
       if (err) {
