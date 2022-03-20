@@ -45,7 +45,7 @@ router
         res.cookie("pass", admUser.password);
         res.cookie("name", admUser.username);
 
-        res.redirect("/");
+        res.redirect("/adm");
       }
     });
   })
