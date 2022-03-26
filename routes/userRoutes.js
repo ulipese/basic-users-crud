@@ -7,7 +7,7 @@ router
   })
   .get("/adm", (req, res) => {
     const cookies = req.signedCookies;
-    
+
     if (cookies.username && cookies.password && cookies.email) {
       res
         .status(200)
@@ -119,30 +119,7 @@ router
       });
     });
   })
-  .post("/delete", (req, res) => {
-    const userId = req.body.userId;
-    User.findByIdAndRemove({ _id: userId }, (err, userDeleted) => {
-      if (err) {
-        console.log(err);
-        res.status(500);
-      }
-    });
-    res.status(200).redirect("/users");
-  })
-  .get("/changeUser/:userId", (req, res) => {
-    User.find({ _id: req.params.userId }, (err, foundUser) => {
-      if (err) {
-        console.log(err);
-        res.status(500);
-      }
-      res.status(200).render("editUser", {
-        titlePage: "Edit User",
-        bodyClass: "edit",
-        users: foundUser,
-      });
-    });
-  })
-  .post("/changeUser", (req, res) => {
+  .post("/users", (req, res) => {
     const user = req.body;
     User.findByIdAndUpdate(
       { _id: user.userId },
@@ -162,6 +139,40 @@ router
         res.status(200).redirect("/users");
       }
     );
+  })
+  .get("/users/:userId", (req, res) => {
+    User.find({ _id: req.params.userId }, (err, foundUser) => {
+      if (err) {
+        console.log(err);
+        res.status(500);
+      }
+      res.status(200).render("editUser", {
+        titlePage: "Edit User",
+        bodyClass: "edit",
+        users: foundUser,
+      });
+    });
+  })
+  .post("/users/delete", (req, res) => {
+    const userId = req.body.userId;
+    if (userId) {
+      User.findByIdAndRemove({ _id: userId }, (err, userDeleted) => {
+        if (err) {
+          console.log(err);
+          res.status(500);
+        }
+        res.status(200).redirect("/users");
+      });
+    }
+    if (!userId) {
+      User.deleteMany({}, (err, userDeleted) => {
+        if (err) {
+          console.log(err);
+          res.status(500);
+        }
+        res.status(200).redirect("/users");
+      });
+    }
   });
 
 module.exports = router;

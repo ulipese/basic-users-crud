@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
 
 <% users.forEach(user => { %>
-  <form action="/changeUser" method="post" class="form edit-user">
+  <form action="/users" method="post" class="form edit-user">
   <h2 class="form__username title">Username</h2>
   <input type="text" name="userName" autocomplete="off" required 
   class="form__input-username input"  

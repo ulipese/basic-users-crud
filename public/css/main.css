@@ -7,7 +7,7 @@
   --bold-font-weight: 600;
   --normal-font-weight: 400;
   --light-red: hsl(6, 96%, 70%);
-  --light-orange: hsl(34, 89%, 64%);
+  --light-orange: hsl(34, 100%, 55%);
   --light-blue: hsl(236, 78%, 68%);
   --light-gray: hsl(236, 91%, 91%);
 }
@@ -60,6 +60,14 @@
 }
 .error-a {
   margin: auto;
+}
+button[type="submit"].form__delete-all {
+  display: flex;
+  align-self: center;
+  justify-self: flex-end;
+}
+button[type="submit"].form__delete-all:hover {
+  background-color: var(--light-orange);
 }
 /* Mobile media */
 html,
