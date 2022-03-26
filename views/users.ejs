@@ -17,8 +17,8 @@
 </article>
 
 <form action="/users/delete" method="post">
-  <button type="submit" name="allUsers" 
-class="form__submit form__delete-all" value=>Delete All Users</button>
+  <<%= tag  %> type="submit" name="allUsers" 
+class=<%= classes %> value=""><%= deleteButton %> </<%= tag %>>
 </form>
 
 <%- include('./partials/footer.ejs') %>

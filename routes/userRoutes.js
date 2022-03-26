@@ -109,6 +109,9 @@ router
           bodyClass: "users",
           users: foundUsers,
           message: "You didn't create users, create here!",
+          deleteButton: "No users to delete...",
+          tag: "p",
+          classes: "no-users",
         });
       }
       res.status(200).render("users", {
@@ -116,6 +119,9 @@ router
         bodyClass: "users",
         users: foundUsers,
         message: "Create new users here!",
+        deleteButton: "Delete All Users",
+        tag: "button",
+        classes: "form__submit form__delete-all",
       });
     });
   })
