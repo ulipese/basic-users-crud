@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
-app.use(cookieParser())
+app.use(cookieParser("ThisIsTheSecretOfAllTheCookies!!!"))
 app.use("/", userRoutes);
 app.set("view engine", "ejs");
 

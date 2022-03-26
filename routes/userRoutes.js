@@ -1,17 +1,19 @@
 const router = require("express").Router();
 const { User } = require("../models/userSchema");
-const cookieParser = require("cookie-parser");
 
 router
   .get("/", (req, res) => {
-    res.redirect("/user");
+    res.status(200).redirect("/user");
   })
   .get("/adm", (req, res) => {
-    const cookies = req.cookies;
-    if (cookies.name && cookies.pass) {
-      res.send(
-        "Hello " + cookies.name + " your password is " + cookies.pass
-      );
+    const cookies = req.signedCookies;
+    
+    if (cookies.username && cookies.password && cookies.email) {
+      res
+        .status(200)
+        .send(
+          `Hello ${cookies.username}, your email is "${cookies.email}" and your password is "${cookies.password}"`
+        );
     } else {
       res.render("adm", {
         titlePage: "Adm Page",
@@ -25,9 +27,10 @@ router
     User.findOne({ email: admUser.email }, (err, foundAdm) => {
       if (err) {
         console.log(err);
+        res.status(500);
       }
       if (foundAdm) {
-        res.render("errorMessage.ejs", {
+        res.status(200).render("errorMessage.ejs", {
           titlePage: "Sorry...",
           bodyClass: "error",
           link: "/",
@@ -40,17 +43,31 @@ router
           password: admUser.password,
           email: admUser.email,
         });
-        console.log("Email:" + admUser.email);
-        res.cookie("email", admUser.email);
-        res.cookie("pass", admUser.password);
-        res.cookie("name", admUser.username);
+        res.cookie("email", admUser.email, {
+          signed: true,
+          secure: true,
+          httpOnly: true,
+          path: "/adm",
+        });
+        res.cookie("password", admUser.password, {
+          signed: true,
+          secure: true,
+          httpOnly: true,
+          path: "/adm",
+        });
+        res.cookie("username", admUser.username, {
+          signed: true,
+          secure: true,
+          httpOnly: true,
+          path: "/adm",
+        });
 
-        res.redirect("/adm");
+        res.status(201).redirect("/adm");
       }
     });
   })
   .get("/user", (req, res) => {
-    res.render("user", {
+    res.status(200).render("user", {
       titlePage: "User Page",
       bodyClass: "home",
     });
@@ -60,9 +77,10 @@ router
     User.findOne({ email: user.email }, (err, foundUser) => {
       if (err) {
         console.log(err);
+        res.status(500);
       }
       if (foundUser) {
-        res.render("errorMessage.ejs", {
+        res.status(200).render("errorMessage.ejs", {
           titlePage: "Sorry...",
           bodyClass: "error",
           link: "/",
@@ -75,7 +93,7 @@ router
           password: user.password,
           email: user.email,
         });
-        res.redirect("/users");
+        res.status(201).redirect("/users");
       }
     });
   })
@@ -83,16 +101,17 @@ router
     User.find({}, (err, foundUsers) => {
       if (err) {
         console.log(err);
+        res.status(500);
       }
       if (foundUsers == 0) {
-        res.render("users", {
+        res.status(404).render("users", {
           titlePage: "Our users",
           bodyClass: "users",
           users: foundUsers,
           message: "You didn't create users, create here!",
         });
       }
-      res.render("users", {
+      res.status(200).render("users", {
         titlePage: "Our users",
         bodyClass: "users",
         users: foundUsers,
@@ -105,17 +124,18 @@ router
     User.findByIdAndRemove({ _id: userId }, (err, userDeleted) => {
       if (err) {
         console.log(err);
+        res.status(500);
       }
-      console.log(userDeleted);
     });
-    res.redirect("/users");
+    res.status(200).redirect("/users");
   })
-  .get("/changeUser:userId", (req, res) => {
+  .get("/changeUser/:userId", (req, res) => {
     User.find({ _id: req.params.userId }, (err, foundUser) => {
       if (err) {
         console.log(err);
+        res.status(500);
       }
-      res.render("editUser", {
+      res.status(200).render("editUser", {
         titlePage: "Edit User",
         bodyClass: "edit",
         users: foundUser,
@@ -136,11 +156,12 @@ router
       (err, userUpdated) => {
         if (err) {
           console.log(err);
+          res.status(500);
         }
-        console.log(userUpdated);
+
+        res.status(200).redirect("/users");
       }
     );
-    res.redirect("/users");
   });
 
 module.exports = router;
