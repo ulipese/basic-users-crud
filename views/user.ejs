@@ -4,15 +4,15 @@
 
   <form action="/user" method="post" class="form create-user">
     <h2 class="form__username title">Username</h2> <br>
-    <input type="text" name="username" autocomplete="off" required maxlength="10"
+    <input type="text" name="username" autocomplete="off" required maxlength="16"
     class="form__input-username input"> <br>
     <h2 class="form__password title">Password</h2> <br>
-    <input type="number" name="password" autocomplete="off" required minlength="8"
+    <input type="number" name="password" autocomplete="off" required pattern=".{6,16}"
     class="form__input-password input"> <br>
     <h2 class="form__email title">Email</h2> <br>
     <input type="email" name="email" autocomplete="off" required maxlength="60"
     class="form__input-email input"> <br>
 
-    <button type="submit" class="form__submit create-user">Create User</button>
+    <button type="button" onclick="toSubmit()" class="form__submit create-user">Create User</button>
   </form>
 <%- include('./partials/footer.ejs') %>
