@@ -12,9 +12,15 @@ const emailInput = document.querySelector("input.form__input-email");
 
 const allInputs = document.querySelectorAll("input.input");
 
-allInputs.forEach((input) => {
-  input.addEventListener("keyup", (event) => {
-    if (event.keyCode === 13) {
+allInputs[0].focus();
+
+allInputs.forEach((ipt, idx) => {
+  ipt.addEventListener("keyup", (event) => {
+    if (event.keyCode === 13 && ipt.value !== "" && idx !== 2) {
+      console.log(idx);
+      allInputs[idx + 1].focus();
+    }
+    if (event.keyCode === 13 && ipt.value !== "" && idx === 2) {
       toSubmit();
     }
   });
