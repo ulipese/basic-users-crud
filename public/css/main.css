@@ -23,10 +23,13 @@
   border-radius: 8px;
   width: 98%;
   height: 2em;
-  margin-bottom: 2.5em;
+  margin-bottom: 2em;
   padding: 0.2em;
   text-indent: 0.5em;
   color: var(--light-red);
+}
+.form__input-email {
+  margin-bottom: 3em;
 }
 .input:focus {
   outline: 2px solid var(--light-red);
@@ -104,16 +107,18 @@ body {
   margin-bottom: 2em;
 }
 .form.edit-user {
-  margin-top: 6em;
+  margin-top: 3.5em;
 }
 .form__username {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 .form__password {
-  margin-bottom: 0.5em;
+  margin-top: 0.8em;
+  margin-bottom: 1em;
 }
 .form__email {
-  margin-bottom: 0.5em;
+  margin-top: 0.8em;
+  margin-bottom: 1em;
 }
 .form.create-user {
   margin-top: 5em;

@@ -3,15 +3,15 @@
   <a href="/users" class="create-a create-screen">See the created users here!</a>
 
   <form action="/user" method="post" class="form create-user">
-    <h2 class="form__username title">Username</h2> <br>
+    <h2 class="form__username title">Username</h2>
     <input type="text" name="username" autocomplete="off" required maxlength="16"
-    class="form__input-username input"> <br>
-    <h2 class="form__password title">Password</h2> <br>
+    class="form__input-username input"> 
+    <h2 class="form__password title">Password</h2> 
     <input type="number" name="password" autocomplete="off" required pattern=".{6,16}"
-    class="form__input-password input"> <br>
-    <h2 class="form__email title">Email</h2> <br>
+    class="form__input-password input"> 
+    <h2 class="form__email title">Email</h2> 
     <input type="email" name="email" autocomplete="off" required maxlength="60"
-    class="form__input-email input"> <br>
+    class="form__input-email input"> 
 
     <button type="button" onclick="toSubmit()" class="form__submit create-user">Create User</button>
   </form>
