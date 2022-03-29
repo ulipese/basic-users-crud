@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../models/userSchema");
-const validateUser = require("./validateUser");
+const validateUser = require("../validateUser");
 
 router
   .get("/", (req, res) => {

@@ -33,6 +33,7 @@ const toSubmit = () => {
     !usernameInput.value
   ) {
     alert("Give a username to the user!");
+    usernameInput.focus();
     return;
   } else if (
     passwordInput.value == "" ||
@@ -44,6 +45,7 @@ const toSubmit = () => {
     alert(
       "The password must be less than 17 and equal or greater than 8!"
     );
+    passwordInput.focus();
     return;
   } else if (
     !emailInput ||
@@ -60,6 +62,7 @@ const toSubmit = () => {
       !emailInput.value.endsWith(".org"))
   ) {
     alert("Put a correct email!");
+    emailInput.focus();
     return;
   } else {
     if (formUser.classList.contains("edit-user")) {
@@ -74,9 +77,13 @@ const toSubmit = () => {
       const wantCreateUser = confirm(
         "Do you want to create the user?"
       );
-      wantCreateUser === true
-        ? formUser.submit()
-        : alert("Ok, check the user data and create one user later!");
+      if (wantCreateUser === true) {
+        formUser.submit();
+      }
+      if (wantCreateUser === false) {
+        alert("Ok, check the user data and create one user later!");
+        usernameInput.focus();
+      }
     }
   }
 };
