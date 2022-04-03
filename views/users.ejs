@@ -10,14 +10,14 @@
   <p name="userEmail" class="form__email users">Email: <%= user.email %></p>
   <a class="form__change-user" 
   href=/users/<%= user._id %>>Change User</a>
-  <button type="submit" name="userId" 
+  <button type="submit" name="userId" id="delete-button"
   class="form__submit" value=<%= user._id %>>Delete User</button>
 </form>
 <%}) %>
 </article>
 
 <form action="/users/delete" method="post">
-  <<%= tag  %> type="submit" name="allUsers" 
+  <<%= tag  %> type="submit" name="allUsers" id="delete-button"
 class=<%= classes %> value=""><%= deleteButton %> </<%= tag %>>
 </form>
 

@@ -1,21 +1,23 @@
 /* Imports */
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 /* Variables */
 :root {
   font-family: "Fredoka", sans-serif;
   --title-font-size: 1.8em;
   --bold-font-weight: 600;
   --normal-font-weight: 400;
-  --light-red: hsl(6, 96%, 70%);
+  --light-red: hsl(6, 96%, 65%);
   --light-orange: hsl(34, 100%, 55%);
-  --light-blue: hsl(236, 78%, 68%);
-  --light-gray: hsl(236, 91%, 91%);
+  --strong-blue: hsl(236, 78%, 60%);
+  --light-blue: hsl(236, 78%, 80%);
+  
 }
 /* Reusable classes */
 .title {
   margin: 0;
   padding: 0;
   font-size: var(--title-font-size);
+  text-shadow: 1px 1px rgb(133, 133, 133);
 }
 .input {
   border: none;
@@ -45,7 +47,7 @@
   transition: 300ms;
 }
 .create-a:hover {
-  color: var(--light-blue);
+  color: var(--strong-blue);
   text-decoration: underline;
 }
 .create-a.create-screen {
@@ -69,7 +71,7 @@ button[type="submit"].form__delete-all {
   align-self: center;
   justify-self: flex-end;
 }
-button[type="submit"].form__delete-all:hover {
+button#delete-button:hover {
   background-color: var(--light-orange);
 }
 p.no-users {
@@ -87,12 +89,12 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: center;
   align-items: center;
 }
 .form {
   color: var(--light-red);
-  background-color: var(--light-gray);
+  background-color: var(--light-blue);
   width: 18em;
   height: fit-content;
   margin-top: 1em;
@@ -164,7 +166,7 @@ body {
   font-size: 18px;
 }
 .footer__a:hover {
-  color: var(--light-blue);
+  color: var(--strong-blue);
 }
 /* Desktop media */
 @media screen and (min-width: 800px) {
