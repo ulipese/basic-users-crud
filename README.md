@@ -31,7 +31,7 @@
 
 ### What I learned
 
-I learned more about CRUD operations with MongoDB and mongoose. 
+I learned more about CRUD operations, MVC, and MongoDB/mongoose. 
 
 ## Author
 
