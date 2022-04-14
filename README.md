@@ -27,6 +27,7 @@
 - mongoose
 - EJS
 - BEM architecture
+- MVC pattern
 - HTML and CSS
 
 ### What I learned
